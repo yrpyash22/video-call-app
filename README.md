@@ -3,8 +3,6 @@
 A real-time video calling application built with the **MERN stack**, featuring secure user authentication and peer-to-peer video calls.
 
 ![MERN Stack](https://img.shields.io/badge/Stack-MERN-61DAFB?style=flat-square&logo=react)
-![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
-![Status](https://img.shields.io/badge/status-active-brightgreen?style=flat-square)
 
 ---
 
@@ -88,15 +86,13 @@ Make sure you have the following installed:
 Create a `.env` file inside the `backend/` directory with the following variables:
 
 ```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
+DB_URL=mongodb://127.0.0.1:27017/videocall
 ```
 
 If the frontend needs to know the backend URL, create a `.env` file inside `frontend/` as well:
 
 ```env
-REACT_APP_API_URL=http://localhost:5000
+VITE_SERVER_URL=http://localhost:8000
 ```
 
 > Update these variable names to match whatever your code actually reads via `process.env`.
