@@ -1,0 +1,572 @@
+/* =========================================
+   VIDEO MEETING COMPONENT
+========================================= */
+
+.meetVideoContainer {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(circle at top left, rgba(124, 58, 237, 0.15), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(6, 182, 212, 0.12), transparent 30%),
+        #010430;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   LOBBY
+========================================= */
+
+.lobbyPage {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        radial-gradient(circle at top left, #7c3aed 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #06b6d4 0%, transparent 35%),
+        linear-gradient(135deg, #0f172a, #1e1b4b, #0f172a);
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+.lobbyCard {
+    width: 100%;
+    max-width: 480px;
+
+    padding: 40px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.35),
+        0 0 40px rgba(139, 92, 246, 0.15);
+
+    text-align: center;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+.lobbyIcon {
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: linear-gradient(135deg, #7c3aed, #06b6d4);
+
+    color: white;
+}
+
+
+.lobbyIcon svg {
+    font-size: 35px;
+}
+
+
+.lobbyCard h1 {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 30px;
+    font-weight: 700;
+}
+
+
+.lobbySubtitle {
+    margin: 10px 0 25px;
+
+    color: #6b7280;
+
+    font-size: 15px;
+}
+
+
+/* =========================================
+   USERNAME ERROR
+========================================= */
+
+.usernameError {
+    margin: 7px 0 0;
+
+    text-align: left;
+
+    color: #dc2626;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   CONNECT BUTTON
+========================================= */
+
+.connectButton {
+    height: 48px !important;
+
+    margin-top: 20px !important;
+
+    border-radius: 12px !important;
+
+    background: linear-gradient(135deg,
+            #7c3aed,
+            #06b6d4) !important;
+
+    font-size: 16px !important;
+
+    font-weight: 600 !important;
+
+    text-transform: none !important;
+
+    box-shadow:
+        0 8px 20px rgba(124, 58, 237, 0.3) !important;
+}
+
+
+.connectButton:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 12px 25px rgba(124, 58, 237, 0.4) !important;
+}
+
+
+.connectButton:disabled {
+    background: #cbd5e1 !important;
+
+    color: #64748b !important;
+
+    box-shadow: none !important;
+}
+
+
+/* =========================================
+   CAMERA PREVIEW
+========================================= */
+
+.previewContainer {
+    margin-top: 30px;
+
+    text-align: left;
+}
+
+
+.previewContainer p {
+    margin: 0 0 10px;
+
+    color: #374151;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.previewVideo {
+    width: 100%;
+
+    height: 190px;
+
+    display: block;
+
+    object-fit: cover;
+
+    background: #111827;
+
+    border-radius: 15px;
+
+    border: 2px solid #e5e7eb;
+}
+
+
+/* =========================================
+   LOCAL USER VIDEO
+========================================= */
+
+.meetUserVideo {
+    position: absolute;
+    left: 20px;
+    bottom: 95px;
+    width: 260px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 18px;
+    background: #111827;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    z-index: 5;
+}
+
+
+/* =========================================
+   OTHER PARTICIPANTS
+========================================= */
+
+.conferenceView {
+    width: 100%;
+    height: 100%;
+
+    padding: 20px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    align-content: center;
+
+    gap: 15px;
+
+    overflow-y: auto;
+}
+
+
+.conferenceView>div {
+    position: relative;
+
+    width: 330px;
+    height: 220px;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    background: #111827;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+
+.conferenceView video {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* =========================================
+   BOTTOM CONTROL BAR
+========================================= */
+
+.buttonContainers {
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 20px;
+
+    transform: translateX(-50%);
+
+    min-height: 65px;
+
+    padding: 8px 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    background: rgba(15, 23, 42, 0.88);
+
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 35px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.4);
+
+    z-index: 20;
+}
+
+
+.buttonContainers button {
+    width: 48px !important;
+    height: 48px !important;
+
+    transition: 0.2s ease !important;
+}
+
+
+.buttonContainers button:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   CHAT ROOM
+========================================= */
+
+.chatRoom {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 360px;
+    height: calc(100vh - 120px);
+    z-index: 30;
+}
+
+
+.chatContainer {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+
+.chatContainer h1 {
+    margin: 0;
+
+    padding: 18px 20px;
+
+    color: #111827;
+
+    font-size: 22px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.chattingDisplay {
+    flex: 1;
+
+    padding: 20px;
+
+    overflow-y: auto;
+}
+
+
+.chattingDisplay p {
+    margin: 3px 0;
+}
+
+
+.chattingDisplay p:first-child {
+    color: #7c3aed;
+}
+
+
+.chattingArea {
+    padding: 15px;
+
+    display: flex;
+
+    gap: 10px;
+
+    border-top: 1px solid #e5e7eb;
+}
+
+
+.chattingArea .MuiTextField-root {
+    flex: 1;
+}
+
+
+.chattingArea button {
+    min-width: 75px;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .lobbyCard {
+        max-width: 430px;
+
+        padding: 30px 25px;
+    }
+
+
+    .lobbyCard h1 {
+        font-size: 26px;
+    }
+
+
+    .conferenceView {
+        padding: 10px;
+
+        align-content: flex-start;
+    }
+
+
+    .conferenceView>div {
+        width: calc(50% - 8px);
+
+        height: 180px;
+    }
+
+
+    .meetUserVideo {
+        width: 150px;
+        height: 110px;
+        left: 10px;
+        bottom: 90px;
+    }
+
+
+    .buttonContainers {
+        bottom: 12px;
+
+        width: auto;
+
+        max-width: calc(100% - 20px);
+
+        gap: 2px;
+    }
+
+
+    .buttonContainers button {
+        width: 44px !important;
+        height: 44px !important;
+    }
+
+
+    .chatRoom {
+        top: 10px;
+        right: 10px;
+        left: auto;
+        width: calc(100% - 20px);
+        height: calc(100vh - 100px);
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .lobbyPage {
+        padding: 15px;
+    }
+
+
+    .lobbyCard {
+        padding: 25px 20px;
+
+        border-radius: 20px;
+    }
+
+
+    .lobbyIcon {
+        width: 60px;
+        height: 60px;
+    }
+
+
+    .lobbyCard h1 {
+        font-size: 24px;
+    }
+
+
+    .previewVideo {
+        height: 160px;
+    }
+
+
+    .conferenceView>div {
+        width: 100%;
+
+        height: 210px;
+    }
+
+
+    .meetUserVideo {
+        width: 120px;
+        height: 90px;
+        left: 10px;
+        bottom: 85px;
+    }
+
+
+    .buttonContainers {
+        padding: 6px 8px;
+    }
+
+
+    .buttonContainers button {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+
+    .buttonContainers svg {
+        font-size: 21px;
+    }
+}
+
+
+@media (max-width: 380px) {
+
+    .lobbyCard {
+        padding: 22px 16px;
+    }
+
+
+    .lobbyCard h1 {
+        font-size: 22px;
+    }
+
+
+    .lobbySubtitle {
+        font-size: 14px;
+    }
+
+
+    .previewVideo {
+        height: 140px;
+    }
+
+
+    .buttonContainers button {
+        width: 36px !important;
+        height: 36px !important;
+    }
+}
