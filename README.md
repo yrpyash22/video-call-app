@@ -147,84 +147,12 @@ Contributions are welcome! To contribute:
 
 ---
 
-flowchart TD
-
-subgraph group_client["Web Client"]
-  node_app["React App<br/>[App.jsx]"]
-  node_authpage["Sign In / Up<br/>[authentication.jsx]"]
-  node_authcontext["Auth Context<br/>[AuthContext.jsx]"]
-  node_home["Home Page<br/>[home.jsx]"]
-  node_historypage["History Page<br/>[history.jsx]"]
-  node_meeting["Meeting UI<br/>[VideoMeet.jsx]"]
-end
-
-subgraph group_api["Account API"]
-  node_apiapp["Express Server<br/>[app.js]"]
-  node_routes["User Routes<br/>[user.routes.js]"]
-  node_usercontroller["User Controller<br/>[user.controller.js]"]
-  node_usermodel["User Model<br/>[userModel.js]"]
-  node_meetingmodel["Meeting Model<br/>[meetingModel.js]"]
-end
-
-subgraph group_realtime["Call Realtime"]
-  node_socketserver["Socket Signaling<br/>[socketManage.js]"]
-end
-
-node_user(("Caller"))
-node_browsermedia["Browser Media"]
-node_mongodb[("MongoDB")]
-node_peers(("Other Call Peers"))
-
-node_user -->|"uses"| node_app
-node_app -->|"routes to"| node_authpage
-node_app -->|"routes to"| node_home
-node_app -->|"routes to"| node_historypage
-node_app -->|"routes to"| node_meeting
-node_authpage -->|"invokes auth"| node_authcontext
-node_home -->|"uses auth"| node_authcontext
-node_historypage -->|"uses history"| node_authcontext
-node_authcontext -->|"HTTP requests"| node_apiapp
-node_apiapp -->|"mounts routes"| node_routes
-node_routes -->|"dispatches"| node_usercontroller
-node_usercontroller -->|"reads/writes users"| node_usermodel
-node_usercontroller -->|"reads/writes history"| node_meetingmodel
-node_usermodel -->|"persists users"| node_mongodb
-node_meetingmodel -->|"persists meetings"| node_mongodb
-node_apiapp -->|"starts socket server"| node_socketserver
-node_meeting -->|"joins / signals / chats"| node_socketserver
-node_socketserver -->|"dispatches events"| node_peers
-node_peers -->|"sends events"| node_socketserver
-node_meeting -->|"requests media"| node_browsermedia
-node_meeting -->|"WebRTC media"| node_peers
-
-click node_app "https://github.com/yrpyash22/video-call-app/blob/main/frontend/src/App.jsx"
-click node_authpage "https://github.com/yrpyash22/video-call-app/blob/main/frontend/src/pages/authentication.jsx"
-click node_authcontext "https://github.com/yrpyash22/video-call-app/blob/main/frontend/src/contexts/AuthContext.jsx"
-click node_home "https://github.com/yrpyash22/video-call-app/blob/main/frontend/src/pages/home.jsx"
-click node_historypage "https://github.com/yrpyash22/video-call-app/blob/main/frontend/src/pages/history.jsx"
-click node_meeting "https://github.com/yrpyash22/video-call-app/blob/main/frontend/src/pages/VideoMeet.jsx"
-click node_apiapp "https://github.com/yrpyash22/video-call-app/blob/main/backend/src/app.js"
-click node_routes "https://github.com/yrpyash22/video-call-app/blob/main/backend/src/routes/user.routes.js"
-click node_usercontroller "https://github.com/yrpyash22/video-call-app/blob/main/backend/src/controllers/user.controller.js"
-click node_usermodel "https://github.com/yrpyash22/video-call-app/blob/main/backend/src/models/userModel.js"
-click node_meetingmodel "https://github.com/yrpyash22/video-call-app/blob/main/backend/src/models/meetingModel.js"
-click node_socketserver "https://github.com/yrpyash22/video-call-app/blob/main/backend/src/controllers/socketManage.js"
-
-classDef toneNeutral fill:#f8fafc,stroke:#334155,stroke-width:1.5px,color:#0f172a
-classDef toneBlue fill:#dbeafe,stroke:#2563eb,stroke-width:1.5px,color:#172554
-classDef toneAmber fill:#fef3c7,stroke:#d97706,stroke-width:1.5px,color:#78350f
-classDef toneMint fill:#dcfce7,stroke:#16a34a,stroke-width:1.5px,color:#14532d
-classDef toneRose fill:#ffe4e6,stroke:#e11d48,stroke-width:1.5px,color:#881337
-classDef toneIndigo fill:#e0e7ff,stroke:#4f46e5,stroke-width:1.5px,color:#312e81
-classDef toneTeal fill:#ccfbf1,stroke:#0f766e,stroke-width:1.5px,color:#134e4a
-class node_app,node_authpage,node_authcontext,node_home,node_historypage,node_meeting,node_browsermedia toneBlue
-class node_apiapp,node_routes,node_usercontroller,node_usermodel,node_meetingmodel,node_mongodb toneAmber
-class node_socketserver toneMint
-class node_user,node_peers toneIndigo
-
----
-
 ## 👤 Author
 
 **yrpyash22**
 [GitHub Profile](https://github.com/yrpyash22)
+
+---
+
+## Live Demo of Website
+![LIVE Site](https://video-call-app-one-omega.vercel.app/)
