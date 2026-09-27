@@ -153,6 +153,73 @@ Contributions are welcome! To contribute:
 [GitHub Profile](https://github.com/yrpyash22)
 
 ---
+---
 
-## Live Demo of Website
-🎥[VIDEO CALL APP](https://video-call-app-one-omega.vercel.app/)
+## 🌐 Deployment
+
+The Video Call App is deployed using a separate frontend and backend architecture.
+
+* **Frontend:** Vercel
+* **Backend:** Render
+* **Database:** MongoDB
+* **Real-Time Communication:** Socket.io + WebRTC
+
+### 🚀 Live Application
+
+The deployed application can be accessed here:
+
+**Live Website:**
+https://video-call-app-one-omega.vercel.app/
+
+### 🏗️ Deployment Architecture
+
+```text
+                    Video Call App
+                          │
+             ┌────────────┴────────────┐
+             │                         │
+        Vercel Frontend            Render Backend
+          React.js                  Node.js
+             │                         │
+             │      API Requests       │
+             ├────────────────────────►│
+             │                         │
+             │                    Socket.io
+             │                         │
+             │                    WebRTC Signaling
+             │                         │
+             │                    MongoDB
+             │
+             └────────── WebRTC ──────────►
+                         Other Peers
+```
+
+### 📌 Production Flow
+
+```text
+User
+  │
+  ▼
+Vercel
+React Frontend
+  │
+  ├──────────────► Render
+  │                Express Backend
+  │                     │
+  │                     ├── MongoDB
+  │                     │
+  │                     └── Socket.io
+  │
+  └──────────────► WebRTC
+                   Peer-to-Peer
+                   Audio / Video
+```
+
+The frontend is hosted on **Vercel**, while the backend API and Socket.io signaling server are hosted on **Render**. MongoDB stores application data, while WebRTC provides peer-to-peer audio and video communication.
+
+### 🔗 Live Demo
+
+👉 https://video-call-app-one-omega.vercel.app/
+
+---
+
